@@ -5,8 +5,14 @@ kind: Ingress
 metadata:
   name: ng-manager
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -37,8 +43,14 @@ kind: Ingress
 metadata:
   name: sto-core
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -69,8 +81,14 @@ kind: Ingress
 metadata:
   name: sto-manager
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -101,8 +119,14 @@ kind: Ingress
 metadata:
   name: et-collector
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -133,8 +157,14 @@ kind: Ingress
 metadata:
   name: et-service
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -165,8 +195,14 @@ kind: Ingress
 metadata:
   name: next-gen-ui
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -197,8 +233,14 @@ kind: Ingress
 metadata:
   name: ci-manager
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -229,8 +271,14 @@ kind: Ingress
 metadata:
   name: cv-nextgen
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -261,6 +309,12 @@ kind: Ingress
 metadata:
   name: minio-ui
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
+  {{- if .Values.global.ingress.annotations }}
+  annotations: {{ toYaml .Values.global.ingress.annotations | nindent 4 }}
+  {{- end }}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -291,6 +345,12 @@ kind: Ingress
 metadata:
   name: logs-service-minio
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
+  {{- if .Values.global.ingress.annotations }}
+  annotations: {{ toYaml .Values.global.ingress.annotations | nindent 4 }}
+  {{- end }}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -321,8 +381,14 @@ kind: Ingress
 metadata:
   name: log-service
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -353,8 +419,14 @@ kind: Ingress
 metadata:
   name: gateway
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -385,8 +457,14 @@ kind: Ingress
 metadata:
   name: access-control
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -417,8 +495,14 @@ kind: Ingress
 metadata:
   name: ti-service
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -449,8 +533,14 @@ kind: Ingress
 metadata:
   name: template-service
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -481,6 +571,12 @@ kind: Ingress
 metadata:
   name: delegate-proxy
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
+  {{- if .Values.global.ingress.annotations }}
+  annotations: {{ toYaml .Values.global.ingress.annotations | nindent 4 }}
+  {{- end }}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -511,8 +607,14 @@ kind: Ingress
 metadata:
   name: pipeline-service
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -543,8 +645,14 @@ kind: Ingress
 metadata:
   name: notification-service
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -575,8 +683,14 @@ kind: Ingress
 metadata:
   name: audit-service
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -607,8 +721,14 @@ kind: Ingress
 metadata:
   name: resourcegroup-service
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -639,8 +759,14 @@ kind: Ingress
 metadata:
   name: verification-service
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -671,6 +797,12 @@ kind: Ingress
 metadata:
   name: harness-manager-api
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
+  {{- if .Values.global.ingress.annotations }}
+  annotations: {{ toYaml .Values.global.ingress.annotations | nindent 4 }}
+  {{- end }}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -701,6 +833,12 @@ kind: Ingress
 metadata:
   name: harness-manager-stream
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
+  {{- if .Values.global.ingress.annotations }}
+  annotations: {{ toYaml .Values.global.ingress.annotations | nindent 4 }}
+  {{- end }}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -731,8 +869,14 @@ kind: Ingress
 metadata:
   name: ng-auth-ui
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    {{- if .Values.global.ingress.annotations }}
+    {{ toYaml .Values.global.ingress.annotations | indent 4 }}
+    {{- end}}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -763,6 +907,12 @@ kind: Ingress
 metadata:
   name: harness-ui
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.global.ingress.labels }}
+  labels: {{ toYaml .Values.global.ingress.labels | nindent 4 }}
+  {{- end }}
+  {{- if .Values.global.ingress.annotations }}
+  annotations: {{ toYaml .Values.global.ingress.annotations | nindent 4 }}
+  {{- end }}
 spec:
   ingressClassName: {{ .Values.global.ingress.className | quote }}
   rules:
@@ -786,6 +936,5 @@ spec:
         {{- end }}
       secretName: {{ .Values.global.ingress.tls.secretName }}
   {{- end }}
-
 {{- end }}
-{{/* end if .Values.global.ingress.enabled */}}
+{{- /* end if .Values.global.ingress.enabled */}}

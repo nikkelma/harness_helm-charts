@@ -76,6 +76,16 @@ global:
     tls:
       enabled: false
       secretName: harness-ssl
+    # add labels to every ingress object created by Harness
+    # e.g.
+    # labels:
+    #   my-label: value
+    labels: {}
+    # add annotations to every ingress object created by Harness
+    # e.g.
+    # annotations:
+    #   my-annotation: value
+    annotations: {}
 
 ## Platform Settings
 harness:
