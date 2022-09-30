@@ -5,5 +5,8 @@ dependencies:
 - name: harness-common
   repository: https://harness.github.io/helm-common
   version: 1.0.4
-digest: sha256:b650ffc8d6c57b397cd255b0ab2800aed39f32975ebb59f77eedfdebb9aead20
-generated: "2022-09-29T13:33:21.420135+05:30"
+- name: ingress-nginx
+  repository: https://kubernetes.github.io/ingress-nginx
+  version: 4.2.5
+digest: sha256:73cd7ea841df27e06434016cad6eed108c937acd6280eaa388e3370e90bc4634
+generated: "2022-09-28T10:13:41.874673-07:00"

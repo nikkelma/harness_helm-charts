@@ -47,6 +47,8 @@ global:
 
   ingress:
     enabled: false
+    # DEPRECATED: use ingress-nginx subchart below instead to manage ingress-nginx
+    # controller installation, if needed
     createNginxIngressController: false
     createDefaultBackend: false
     loadBalancerIP: '0.0.0.0'
@@ -74,6 +76,46 @@ global:
     tls:
       enabled: false
       secretName: harness-ssl
+
+# Optionally deploy Kubernetes' ingress-nginx controller via subchart. Commonly
+# changed values are listed below in their recommended config options for the
+# Harness installation; see
+# https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
+# for full chart details
+ingress-nginx:
+  # `enabled: true` deploys the ingress-nginx subchart
+  enabled: false
+
+  controller:
+    # change image config as needed for air-gapped / mirrored registries
+    image:
+      registry: registry.k8s.io
+      image: ingress-nginx/controller
+      tag: "v1.3.1"
+    # configure created IngressClass; must match global.ingress.className
+    ingressClassResource:
+      name: harness
+    # manually scale ingress controller replicas
+    # > NOTE: chart also includes horizontal pod autoscaler options, if desired
+    replicaCount: 1
+    # configure the service fronting the ingress controller
+    service:
+      enabled: true
+      # type ClusterIP or type NodePort also supported
+      type: LoadBalancer
+      # ONLY set loadBalancerIP if using type LoadBalancer AND the
+      # Kubernetes-provisioned load balancer should be attached to a pre-provisioned
+      # static IP.
+      loadBalancerIP: ""
+
+  # Harness recommends deploying the default backend to clearly indicate non-matched
+  # ingresses with a 404 response
+  defaultBackend:
+    enabled: true
+    image:
+      registry: registry.k8s.io
+      image: defaultbackend-amd64
+      tag: "1.5"
 
 ## Platform Settings
 harness:
